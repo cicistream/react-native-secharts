@@ -1,3 +1,10 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: Cici
+ * @tpl: <-- Created on {createTime} By {author} -->
+ * 
+ */
 const toString = (obj) => {
   let result = JSON.stringify(obj, function (key, val) {
     // 对function进行特殊处理
@@ -10,6 +17,7 @@ const toString = (obj) => {
   do {
     result = result.replace('\"~ha~', '').replace('~ha~\"', '').replace(/\\n/g, '').replace(/\\\"/g, "\"");//最后一个replace将release模式中莫名生成的\"转换成"
   } while (result.indexOf('~ha~') >= 0);
+  result = unescape(result.replace(/\\u/g, "%u"));
   return result;
 }
 
